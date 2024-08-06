@@ -11,6 +11,12 @@ We also had the intention of using this wavelength and a measured or known frequ
 
 The double slit experiment involves coherent light passing through two rectangular slits in a shield. The resulting diffraction around the edges of each slits produces two curved wavefronts that interfere with each other. When measured on a screen, or in this case, recording the intensity of received radiation at an angle, an interference is revealed where constructive interference produces high intensity spots, and destructive interference produces zero intensity spots. The double slit experiment can be carried out with any radiation, and in fact, anything with wave-like properties, including matter such as electrons, which follows from De Broglie's matter wave theory. It is important that the scale of the experiment is similar to that of the wavelength being tested. In this case, to allow for macroscopic analysis and construction of the experiment, microwaves were used. This allows the experiment to be carried out on an easily perceived scale due to the microwave used having a wavelength in the centimetres.
 
+\subsection*{Acknowledgements}
+
+Thanks to my lab partners, Josh Moses and Josh Butel. Thank you also our lab demonstrators Daniel Czapski, Michelle Ding, and Lucas Glover for their assistance 
+
+
+
 \subsection*{Relevant Theory}
 \label {sec:theory}
 
@@ -92,10 +98,24 @@ done
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{setup_for_double_slit.png}
-\caption{Setup of microwave transmitter/receiver and double slit (credit to PASCO manual)}
 
+\begin{subfigure}[t]{0.5\textwidth}
+\includegraphics[width=1\textwidth]{setup_for_double_slit.png}
+\caption{Setup of microwave transmitter/receiver and double slit (credit to PASCO manual)}
 \label{fig:goniometer_and_microwaves}
+
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.4\textwidth}
+\includegraphics[width=1\textwidth]{setup_picture.jpg}
+
+\caption{Picture of setup (credit to Josh M)}
+\label{pic:setup_photo}
+
+\end{subfigure}
+
+\caption{Setup Diagram and Photo}
+
 \end{figure}
 
 \subsubsection*{Logger Pro settings}
@@ -221,6 +241,25 @@ The discontinuities are expected as the sensor measures in a range of $[0°, \, 
 
 The failure of the measurement is most obvious in the angle-voltage data. Comparing these plots with the expected curve (figure \ref{fig:ExpectedCurve}) will result in a migraine, and we were thus unable to draw any valid conclusion from the data about the phenomena we attempted to measure. Referencing the previously calculated uncertainty, I can confidently say that our result was not consistent.
 
+\subsection*{Contigency Experiment}
+
+We did carry out a manual check of the apparatus using the analogue reading and goniometer.
+This was more of a vibe check. 
+
+\begin{table}[h]
+\begin{tabular}{|ll|}
+\hline
+ Order & Angle (°)   \\
+\hline
+ 1  & 16   \\
+ 2  & 28   \\
+\hline
+\end{tabular}
+\end{table}
+
+At $d = 9$cm and $a = 3$cm this gives $\lambda_1 = d \sin{(16°)} \approx 2.5$cm and $\lambda_2 = d \sin{(28°)} \approx 2.1$cm and $\lambda_{avg} = 2.3$cm. 
+This quick check produces results near enough the theoretical wavelength of 2.8cm to indicate that this portion of the experiment works.
+
 \section*{Discussion}
 
 The data gathered cannot be used to procure the original result of measuring the wavelength of the microwave. There is however a lot to examine in both the design of the experiment and its execution.
@@ -243,6 +282,18 @@ A lot of strife could have been avoided if the recorded measurements were immedi
 \subsection*{Intensity Measurement}
 
 During second lab a lot of time was spent attempting to troubleshoot the microwave intensity readings. The main cause of this issue was the use of a digital ammeter when recording intensity data. Although I am lucky enough to have insofar avoided higher electronics, we suspected that the lowered impedance of the ammeter was interfering with its own measurements. Upon inspecting the manual Josh M. discovered that the external reading was intended to be used with a voltmeter. The switch immediately produced something close to the expected interference pattern.
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+	\centering
+	\includegraphics[width=0.4\textwidth]{trial_4_one_sweep_annotated.png}
+	\caption{Trial 4 single sweep extract \textemdash \, annotated}
+\end{wrapfigure} 
+There was also an unexplained observation, that being a minimal envelope. This is visible most clearly in trial 4, where on the second and third order minima, the intensity does not reach zero. This was strange since it does zero on the first order. During the experiment we tested shielding the reciever at different angles, which seemed to produce a dampening effect. In the end the polarisation angle was changed from horizontal to vertical, which mitigated most of this observed phenomenon.
+
+\section*{Conclusion}
+
+Most people would not describe this experiment as a success.
+This experiment did however provide insight into strategies of mitigating the chance of failure, and the damage cause by a single component's malfunctioning.
 
 \input{appendix.tex}
 
