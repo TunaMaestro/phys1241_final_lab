@@ -17,7 +17,7 @@ if __name__ == "__main__":
     offset_tries = 200
     for i in range(offset_tries):
         df = process_trial(
-            "t7", data_dir, manual_offset_millis=(i - offset_tries) * 100
+            "t7", data_dir, manual_offset_millis=(i - offset_tries) * 1000
         )
         df.write_csv("tests/t2/synced.csv")
         plot = df.plot.scatter(

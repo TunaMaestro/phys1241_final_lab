@@ -15,10 +15,10 @@ def index():
 def save():
     print(request.content_type)
     json = request.json
+    text = "".join(f"{','.join(map(str,row))}\n" for row in json)
     with open("data/" + sys.argv[1], "a") as f:
-        text = "".join(f"{','.join(map(str,row))}\n" for row in json)
         f.write(text)
-        print(text)
+    print(text)
 
     return Response()
 
