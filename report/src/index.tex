@@ -2,29 +2,29 @@
 
 This experiment involves the use of a microwave tansmitter and receiver pair to measure the shape of an interference pattern caused by light passing through a double slit.
 
-Unfortunately, this experiment did not proceed as planned due to issues in implementation, but it has given us experimenters a chance to learn about a few of the mistakes we made in its design and execution. This is the price we paid for having successful and accurate experimnents and data throughout the term.
+Unfortunately, this experiment did not proceed as planned due to issues in implementation, but it has given us experimenters a chance to learn about a few of the mistakes we made in its design and execution. This is the price we paid for having successful and accurate experiments and data throughout the term.
 
 \subsection*{Aim}
 
 We wished to measure the wavelength of a microwave source using a derivative of Young's double-slit experiment.
 We also had the intention of using this wavelength and a measured or known frequency to measure the speed of light.
 
-The double slit experiment involves coherent light passing through two rectangular slits in a shield. The resulting diffraction around the edges of each slits produces two curved wavefronts that interfere with each other. When measured on a screen, or in this case, recording the intensity of received radiation at an angle, an interference is revealed where constructive interference produces high intensity spots, and destructive interference produces zero intensity spots. The double slit experiment can be carried out with any radiation, and in fact, anything with wave-like properties, including matter such as electrons, which follows from De Broglie's matter wave theory. It is important that the scale of the experiment is similar to that of the wavelength being tested. In this case, to allow for macroscopic analysis and construction of the experiment, microwaves were used. This allows the experiment to be carried out on an easily perceived scale due to the microwave used having a wavelength in the centimetres.
+The double slit experiment involves coherent light passing through two rectangular slits in a shield. The resulting diffraction around the edges of each slit produces two curved wavefronts that interfere with each other. When measured on a screen, or in this case recording the intensity of received radiation at an angle, an interference is revealed where constructive interference produces high intensity spots, and destructive interference produces zero-intensity spots. The double slit experiment can be carried out with any radiation, and in fact, anything with wave-like properties, including matter such as electrons, which follows from De Broglie's matter wave theory. It is important that the scale of the experiment be similar to that of the wavelength being tested. In this case, to allow for macroscopic analysis and construction of the experiment, microwaves were used. This allows the experiment to be carried out on an easily perceived scale due to the microwave used having a wavelength in the order of centimetres.
 
 \subsection*{Acknowledgements}
 
-Thanks to my lab partners, Josh Moses and Josh Butel. Thank you also our lab demonstrators Daniel Czapski, Michelle Ding, and Lucas Glover for their assistance 
+Thanks to my lab partners, Josh Moses and Josh Butel. Thank you also to our lab demonstrators, Daniel Czapski, Michelle Ding, and Lucas Glover for their assistance in the lab. 
 
 
 
 \subsection*{Relevant Theory}
 \label {sec:theory}
 
-Using the wave model of light, we can calculate the expected intensity of light at an angle. The intensity is affected two interferences. The diffraction caused by a single slit, and the interference between both slits' wavefronts. As a note, it is vital that the source light is completely in phase with itself (coherent). This means that every emitted photon shares the same wave equation in both time and space (before diffraction). Uncoherent light will still interfere, but in a completely random way that results in a similarly uniform output with no peaks or valleys, resulting in no observed effect.
+Using the wave model of light, we can calculate the expected intensity of light at an angle. The intensity is affected by two interferences. The diffraction caused by a single slit, and the interference between both slits' wavefronts. As a note, it is vital that the source light is completely in phase with itself (coherent). This means that every emitted photon shares the same wave equation in both time and space (before diffraction). Uncoherent light will still interfere, but in a completely random way that results in a similarly uniform output with no peaks or valleys, resulting in no observed effect.
 
-Interference is a result of the superposition property. At each point in space, the intensity of the total light wave is the sum of all light waves through that point. Since the propagation of a wave is due to its electric and magnetic waves, we can model the electric wave instead of the light wave. The electric wave is sinusoidal in intensity at a point over time, or at a time over a distance. From the first property, the intensity on a point on the screen will be a sum of these sine waves, itself a sine wave. Therefore it is the points where the source waves are in phase where constructive interference is seen, and where they are out of phase that destructive interference is seen.
+Interference is a result of the superposition property. At each point in space, the intensity of the total light wave is the sum of all light waves through that point. Since the propagation of a wave is due to its electric and magnetic waves, we can model the electric wave instead of the light wave. The electric wave is sinusoidal in intensity at a point over time, or at a time over a distance. From the first property, the intensity at a point on the screen will be a sum of these sine waves, itself a sine wave. Therefore it is the points where the source waves are in phase where constructive interference is seen, and where they are out of phase that destructive interference is seen.
 
-By modelling the double slit experiment as two spherically propagating sources of initially in-phase light, any point has a light wave that is the sum of the two sources. The phase difference at any point is therefore given by the relationship between the wavelength, and the path difference at the given point. This results in the equation of intensity 
+By modeling the double slit experiment as two spherically propagating sources of initially in-phase light, any point has a light wave that is the sum of the two sources. The phase difference at any point is therefore given by the relationship between the wavelength, and the path difference at the given point. This results in the equation of intensity 
 
 \begin{equation}
 	\label{eqn:DoubleSlitIntensity}
@@ -33,7 +33,7 @@ I = I_{max} ~ \cos^2 \left(\frac{\pi \, d \, \sin(\theta)}{\lambda}\right)
 
 where $d$ is the distance between the two slits, and $\lambda$ is the wavelength.
 
-The derivation of the single slit intensity constructs infinite light sources across a slit of width $a$. The phase difference between the two edges of slit is given by
+The derivation of the single slit intensity constructs infinite light sources across a slit of width $a$. The phase difference between the two edges of the slit is given by
 
 \begin{equation}
 	\label{eqn:SingleSlitPhase}
@@ -85,7 +85,7 @@ In the experiment we tried the pair in both their horizontal and vertical orient
 
 The smartphone is used as an angle sensor via its internal accelerometer and magnemometer that it uses for functions such as compass heading. From here it will be referred to as the angle sensor. The angle sensor must be mounted flat, and be rotationally rigid with respect to the microwave receiver. In our experiment, the phone sat in the receiver's sled base, and was kept anchored using a wedge.
 
-Two series of data must be synchronised for this experiment \textemdash time-voltage and time-angle. The time-angle measurement is already designed to store UTC time, but the logger pro software stores time as a duration from the start of the recording. To therefore get the universal time of the voltage, the universal time of at least one voltage data point must be recorded. This was done by constantly displaying the current time at the same time as the voltage data was logged, and screen recording both. Time was displayed using a simple bash script that infinitely printed the current seconds since the UNIX epoch, which was also recorded in the angle data. The below script prints the time every $\sim$5ms which is similar to the polling rate of the angle measurements.
+Two series of data must be synchronised for this experiment \textemdash time-voltage and time-angle. The time-angle measurement is already designed to store UTC time, but the Logger Pro software stores time as a duration from the start of the recording. To therefore get the universal time of the voltage, the universal time of at least one voltage data point must be recorded. This was done by constantly displaying the current time at the same time as the voltage data was logged, and screen recording both. Time was displayed using a simple bash script that infinitely printed the current seconds since the UNIX epoch, which was also recorded in the angle data. The below script prints the time every $\sim$5ms which is similar to the polling rate of the angle measurements.
 
 
 \begin{minted}{bash}
@@ -126,7 +126,7 @@ Set polling rate to 500Hz (1 measurement every 2ms). Set record duration to 120s
 The angle of the goniometer was measured in a novel way in this experiment. Since the voltage probe records a constant sample of voltages, something similar was wanted for angle. To solve this, a smart phone's magnetic heading reading was used.
 
 The setup involves a webserver receiving and writing recorded angle measurements, and a web browser taking and sending them. The webserver must be started, while the phone and laptop are on the same local area network. The university network is not completely open and is quite complicated, so the phone's hotspot was use and the laptop was connected to that. This does not use mobile data however, the phone merely acts as a modem. The server can then be restarted and passed a file name to write to. The phone does not have to reload the page, it will keep sending requests even when the server is down between trials. c-
-Although this setup seemed to work reliably, it in fact did not work at all, and did not produce usable measurements. The data recorded did not seem to fit at all with the movements that were made. There were stretches of no recorded change in angle, and also stretches where massive fast changes were recorded, both without any relation to the real movement at the time, or the intensity recordings. This was quite strange, because when carrying out the experiment, the live angle indicator always moved in an expected way. In testing of the apparatqus after the experiment, such as through slow and fast 360° rotations, the angle was recorded as expected.
+Although this setup seemed to work reliably, it in fact did not work at all, and did not produce usable measurements. The data recorded did not seem to fit at all with the movements that were made. There were stretches of no recorded change in angle, and also stretches where massive fast changes were recorded, both without any relation to the real movement at the time, or the intensity recordings. This was quite strange, because when carrying out the experiment, the live angle indicator always moved in an expected way. In testing of the apparatus after the experiment, such as through slow and fast 360° rotations, the angle was recorded as expected.
 
 The issues of this apparatus and its integration into the experiment are analysed later in the report.
 
@@ -137,7 +137,7 @@ The issues of this apparatus and its integration into the experiment are analyse
 \item Take out the phone and spin it around in a figure eight so that it resets its orientation and is properly calibrated.
 		This step shouldn't be necessary, and would be removed upon improvement of this piece of apparatus as described later.
 \item Begin the server writing to a file (\verb|python3 server.py t1.csv|) where t1.csv refers to the current trial.
-\item Start the recording on the logger pro software.
+\item Start the recording on the Logger Pro software.
 \item Slowly sweep the receiving goniometer across its full range of motion.
 \item Once the logging has completed, stop the server (ctrl-C) to stop recording angle data.
 \end{enumerate}
@@ -191,9 +191,9 @@ The analysis itself was done in python using the polars data library. The synchr
 This offset was then added to all the relative time displacements in the voltage series. The time-angle and time-voltage series were then combined using a join 
 \verb|combined = intensity.join_asof(angle, on="real_time")| producing the angle-voltage series. These series were then plotted for each trial.
 
-The analysis would have continued to all for a comparison between theoretical and emperical data, however this was not conducted due to the poor data gathered.
+The analysis would have continued to a comparison between theoretical and empirical data, however this was not conducted due to the poor data gathered.
 
-The final intention was to determine the wavelength of the microwave, then multiply that with the provided frequency of $10.525 GHz$
+The final intention was to determine the wavelength of the microwave, then multiply that with the provided frequency of $10.525$GHz
 
 \section*{Data}
 
@@ -216,11 +216,11 @@ The final intention was to determine the wavelength of the microwave, then multi
 
 The raw data recorded consists of the time-angle series measured using the angle sensor apparatus, the time-voltage series measured using the Vernier differential voltage probe, and recorded using Logger Pro software, and the screen recording synchronisation data. Both time series consist of a time column and their respective data column, and were polling on the order of 2-5Hz.
 
-The data is represented here post-processed and in plot form. This is because the raw data consists of a large (24MB) of digital sample values, so it would not be reasonable to present here. The data is accessible in the provided git repository in its raw and processed form however.
+The data is represented here post-processed and in plot form. This is because the raw data consists of a large (24MB) of digital samples, so it would not be reasonable to present it here. The data is accessible in the provided git repository in its raw and processed form however.
 
 The synchronisation data that was derived from the screen recordings are in the \nameref{tab:SynchronisationTable}.
 
-The plots are vital to understanding the data due to the sheer quantity of data points recorded; with only numerical aggregations it would be impossilbe to gain an understanding of the experiment.
+The plots are vital to understanding the data due to the sheer quantity of data points recorded; with only numerical aggregations it would be impossible to gain an understanding of the experiment.
 
 \input{plots.tex}
 
@@ -269,31 +269,32 @@ The data gathered cannot be used to procure the original result of measuring the
 I have scrutinised the angle sensing apparatus to attempt to diagnose what failed in the lab.
 
 Issues in the software interface with the phone:
-The angle sensor data was accessed using a web browser, which poses layers of indirection from the underlying phones services, possible producing sources of error and unreliability. This guess stems from comparing the readout in web compasses to that of a compass application and tesla meter, and obvserving effects where the web reading seemed to get confused after being manipulated, involving losing track of North. In future, a native application would be used.
+The angle sensor data was accessed using a web browser, which poses layers of indirection from the underlying phone's services, possibly producing sources of error and unreliability. This guess stems from comparing the readout in web compasses to that of a compass application and tesla meter, and observing effects where the web reading seemed to get confused after being manipulated, involving losing track of North. In future, a native application would be used.
 
 Magnetic interference:
-Upon testing with a tesla meter, I noticed that near my computer and other electronics the magnitude of the local field rose to 
-$\sim$\SI{180}{\micro\tesla} compared to a measured $\sim$\SI{40}{\micro\tesla} further away. If there was a measured field in the horizontal plane, this could easily interfere with the magnemometer. In the experiment, the phone was placed directly below the Gunn diode reciever, which itself is powered. A field emitted by the receiver could overpower Earth's field, and would explain why there was at times no measured change in angle; since the two devices were by design stationary with respect to each other, the phone would measure a field in a constant direction relative to itself, and not be able to measure rotation exactly. It may still be able to make a guess using its accelerometers, leading to results so unconcerned by reality (or at least the reality I had hoped for).
-I attempted to replicate this in two ways, however could not produce conclusive results. First I powered on a 230V AC motor near the phone, but this did not produce a measured magnetic field (compared to background), likely because at 20Hz polling and 50Hz AC, and with tightly wound metal-enclosed coils, there was no long-term measurable net field. I also tested the phone above my keyboard where the absolute magnetic flux was greatest. At times the teslameter's overall direction would stray from North, or would return to North slowly. 
+Upon testing with a Tesla meter, I noticed that near my computer and other electronics the magnitude of the local field rose to 
+$\sim$\SI{180}{\micro\tesla} compared to a measured $\sim$\SI{40}{\micro\tesla} further away. If there was a measured field in the horizontal plane, this could easily interfere with the magnemometer. In the experiment, the phone was placed directly below the Gunn diode receiver, which itself is powered. A field emitted by the receiver could overpower Earth's field, and would explain why there was at times no measured change in angle; since the two devices were by design stationary with respect to each other, the phone would measure a field in a constant direction relative to itself, and not be able to measure rotation exactly. It may still be able to make a guess using its accelerometers, leading to results so unconcerned by reality (or at least the reality I had hoped for).
+I attempted to replicate this in two ways, however could not produce conclusive results. First I powered on a 230V AC motor near the phone, but this did not produce a measured magnetic field (compared to background), likely because at 20Hz polling and 50Hz AC, and with tightly wound metal-enclosed coils, there was no long-term measurable net field. I also tested the phone above my keyboard where the absolute magnetic flux was greatest. At times the Teslameter's overall direction would stray from North, or would return to North slowly. 
 
 It was frustrating that these issues were not readily apparent. Testing a simple 360° rotation after the lab produced a reasonable plot, and live angle readouts at a given time seemed to correspond to movements.
 A lot of strife could have been avoided if the recorded measurements were immediately visible in the lab. A live plot output similar to that of the Vernier software would have been extremely useful in identifying a problem, in much the same way that we could investigate the problems in the intensity readings during the lab. The numerical output of the sensor should not have been trusted, as it is now quite obvious how useless a live stream of time-angle tuples are in revealing failing measurements to an experimenter.
 
 \subsection*{Intensity Measurement}
 
-During second lab a lot of time was spent attempting to troubleshoot the microwave intensity readings. The main cause of this issue was the use of a digital ammeter when recording intensity data. Although I am lucky enough to have insofar avoided higher electronics, we suspected that the lowered impedance of the ammeter was interfering with its own measurements. Upon inspecting the manual Josh M. discovered that the external reading was intended to be used with a voltmeter. The switch immediately produced something close to the expected interference pattern.
+During second lab a lot of time was spent attempting to troubleshoot the microwave intensity readings. The main cause of this issue was the use of a digital ammeter when recording intensity data. Although I am lucky enough to have insofar avoided higher electronics, we suspected that the lowered impedance of the ammeter was interfering with its own measurements. Upon inspecting the manual, Josh M. discovered that the external reading was intended to be used with a voltmeter. The switch immediately produced something close to the expected interference pattern.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
 	\centering
 	\includegraphics[width=0.4\textwidth]{trial_4_one_sweep_annotated.png}
 	\caption{Trial 4 single sweep extract \textemdash \, annotated}
 \end{wrapfigure} 
-There was also an unexplained observation, that being a minimal envelope. This is visible most clearly in trial 4, where on the second and third order minima, the intensity does not reach zero. This was strange since it does zero on the first order. During the experiment we tested shielding the reciever at different angles, which seemed to produce a dampening effect. In the end the polarisation angle was changed from horizontal to vertical, which mitigated most of this observed phenomenon.
+There was also an unexplained observation, that being a minimal envelope. This is visible most clearly in trial 4, where on the second and third order minima, the intensity does not reach zero. This was strange since it does zero on the first order. During the experiment we tested shielding the receiver at different angles, which seemed to produce a dampening effect. In the end the polarisation angle was changed from horizontal to vertical, which mitigated most of this observed phenomenon.
 
 \section*{Conclusion}
 
 Most people would not describe this experiment as a success.
 This experiment did however provide insight into strategies of mitigating the chance of failure, and the damage cause by a single component's malfunctioning.
+It was also a learning experience in what happens when you use minimally tested apparatus without immediate feedback in a lab setting.
 
 \input{appendix.tex}
 
