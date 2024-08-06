@@ -79,7 +79,7 @@ In the experiment we tried the pair in both their horizontal and vertical orient
 
 The smartphone is used as an angle sensor via its internal accelerometer and magnemometer that it uses for functions such as compass heading. From here it will be referred to as the angle sensor. The angle sensor must be mounted flat, and be rotationally rigid with respect to the microwave receiver. In our experiment, the phone sat in the receiver's sled base, and was kept anchored using a wedge.
 
-Two series of data must be synchronised for this experiment \textemdash time-voltage and time-angle. The time-angle measurement is already designed to store UTC time, but the logger pro software stores time as a duration from the start of the recording. To therefore get the universal time of the voltage, the universal time of at least one voltage data point must be recorded. This was done by constantly displaying the current time at the same time as the voltage data was logged, and screen recording both. Time was displayed using a simple bash script that infinitely printed the current seconds since the UNIX epoch, which was also recorded in the angle data. The below script prints the time every ~5ms which is similar to the polling rate of the angle measurements.
+Two series of data must be synchronised for this experiment \textemdash time-voltage and time-angle. The time-angle measurement is already designed to store UTC time, but the logger pro software stores time as a duration from the start of the recording. To therefore get the universal time of the voltage, the universal time of at least one voltage data point must be recorded. This was done by constantly displaying the current time at the same time as the voltage data was logged, and screen recording both. Time was displayed using a simple bash script that infinitely printed the current seconds since the UNIX epoch, which was also recorded in the angle data. The below script prints the time every $\sim$5ms which is similar to the polling rate of the angle measurements.
 
 
 \begin{minted}{bash}
@@ -141,7 +141,7 @@ On average, $\Delta \theta \approx 10\deg$ between two minima, giving $\frac{0.0
 
 Time will be the same as above.
 
-The voltage probe has a provided resolution of 1.6mV, although in the data the recorded voltages seemed have ~3mV resolution which is near the probe's 12-bit resolution.
+The voltage probe has a provided resolution of 1.6mV, although in the data the recorded voltages seemed have $\sim$3mV resolution which is near the probe's 12-bit resolution.
 Based on the data however, for any small change in time, i.e. on the order of 10ms, which would include 5 readings, there is a much greater range in voltage than would be expected. This is likely due to noise introduced by the microwave receiver, leading to 
  Although this error is present, the values of the voltage are unimportant in this experiment, only their relative magnitudes.
 
@@ -151,13 +151,13 @@ Based on the data however, for any small change in time, i.e. on the order of 10
 	\caption{High zoom into voltage peak data}
 \end{wrapfigure} 
 
-The voltage probe has a provided resolution of 1.6mV, although in the data the recorded voltages seemed have ~3mV resolution which is near the probe's 12-bit resolution.
-Based on the data however, for any small change in time, i.e. on the order of 10ms, which would include 5 readings, there is a much greater range in voltage than would be expected. This is likely due to noise introduced by the microwave receiver, leading to an error range of the height of the voltage line, which is ~20mV.
+The voltage probe has a provided resolution of 1.6mV, although in the data the recorded voltages seemed have $\sim$3mV resolution which is near the probe's 12-bit resolution.
+Based on the data however, for any small change in time, i.e. on the order of 10ms, which would include 5 readings, there is a much greater range in voltage than would be expected. This is likely due to noise introduced by the microwave receiver, leading to an error range of the height of the voltage line, which is $\sim$20mV.
  Although this error is present, the values of the voltage are unimportant in this experiment, only their relative magnitudes which allow for the detection of maxima and minima.
 
 \subsection*{Synchronisation}
 
-The two series must be synchronised so that each time-voltage pair can be associated with a time-angle pair, producing an angle-voltage pair. Due to the limited way in which the universal time of the logger pro series could be recorded, we estimate an uncertainty of 5ms in the time. The greatest uncertainty likely comes from the frame rate was 60fps, so ~17ms per frame. This gives an uncertainty of 8ms in the time synchronisation.
+The two series must be synchronised so that each time-voltage pair can be associated with a time-angle pair, producing an angle-voltage pair. Due to the limited way in which the universal time of the logger pro series could be recorded, we estimate an uncertainty of 5ms in the time. The greatest uncertainty likely comes from the frame rate was 60fps, so $\sim$17ms per frame. This gives an uncertainty of 8ms in the time synchronisation.
 
 The time series were combined using an AsOf left join on the voltage data, which selects the closest matching row. This adds an uncertainty that is related to the resolution of the angle data. The angle data has a time resolution of 5ms, but the procurement of an uncertainty from this process is not obvious, so an estimation of 5\% uncertainty will be made.
 
@@ -198,7 +198,7 @@ The raw data recorded consists of the time-angle series measured using the angle
 
 The data is represented here post-processed and in plot form. This is because the raw data consists of a large (24MB) of digital sample values, so it would not be reasonable to present here. The data is accessible in the provided git repository in its raw and processed form however.
 
-The synchronisation data that was derived from the screen recordings is in the \nameref{tab:SynchronisationTable}.
+The synchronisation data that was derived from the screen recordings are in the \nameref{tab:SynchronisationTable}.
 
 The plots are vital to understanding the data due to the sheer quantity of data points recorded; with only numerical aggregations it would be impossilbe to gain an understanding of the experiment.
 
@@ -212,7 +212,7 @@ As is obvious in the last column of the results, the experiment failed to produc
 
 \subsection*{Analysis}
 
-This is the source of bad data. By comparing the plots of angle over time to the movement carried out during the experiment, we see that the recorded angle has seemingly no bearing on reality. This was quite a confusing and frustrating discovery since during testing and upon cursory inspection during the experiment the angle measurement seemed to operate correctly. 
+The source of the unusable data is the angle measurements. By comparing the plots of angle over time to the movement carried out during the experiment, we see that the recorded angle has seemingly no bearing on reality. This was quite a confusing and frustrating discovery since during testing and upon cursory inspection during the experiment the angle measurement seemed to operate correctly. 
 In some of the trials such as 3, 4, 5, there are plateaus of angle where there is still change in voltage. This should not occur and is indicative of the sensor's catastrophic failure. There are also periods of fast and spiked changes in angle, (trials 3, 4, 5) which does not correlate with the slow rotation carried out during the experiment.
 
 It is also important to note that the starting angle and overall range varies greatly. This is unexpected as although Earth hasn't had one for a long time, geomagnetic reversal is quite slow. This aspect of the data leads into our questioning of the sensor's calibration and reliability.
@@ -221,9 +221,28 @@ The discontinuities are expected as the sensor measures in a range of $[0°, \, 
 
 The failure of the measurement is most obvious in the angle-voltage data. Comparing these plots with the expected curve (figure \ref{fig:ExpectedCurve}) will result in a migraine, and we were thus unable to draw any valid conclusion from the data about the phenomena we attempted to measure. Referencing the previously calculated uncertainty, I can confidently say that our result was not consistent.
 
-\subsection*{Discussion}
+\section*{Discussion}
 
+The data gathered cannot be used to procure the original result of measuring the wavelength of the microwave. There is however a lot to examine in both the design of the experiment and its execution.
 
+\subsection*{Angle Sensor}
+
+I have scrutinised the angle sensing apparatus to attempt to diagnose what failed in the lab.
+
+Issues in the software interface with the phone:
+The angle sensor data was accessed using a web browser, which poses layers of indirection from the underlying phones services, possible producing sources of error and unreliability. This guess stems from comparing the readout in web compasses to that of a compass application and tesla meter, and obvserving effects where the web reading seemed to get confused after being manipulated, involving losing track of North. In future, a native application would be used.
+
+Magnetic interference:
+Upon testing with a tesla meter, I noticed that near my computer and other electronics the magnitude of the local field rose to 
+$\sim$\SI{180}{\micro\tesla} compared to a measured $\sim$\SI{40}{\micro\tesla} further away. If there was a measured field in the horizontal plane, this could easily interfere with the magnemometer. In the experiment, the phone was placed directly below the Gunn diode reciever, which itself is powered. A field emitted by the receiver could overpower Earth's field, and would explain why there was at times no measured change in angle; since the two devices were by design stationary with respect to each other, the phone would measure a field in a constant direction relative to itself, and not be able to measure rotation exactly. It may still be able to make a guess using its accelerometers, leading to results so unconcerned by reality (or at least the reality I had hoped for).
+I attempted to replicate this in two ways, however could not produce conclusive results. First I powered on a 230V AC motor near the phone, but this did not produce a measured magnetic field (compared to background), likely because at 20Hz polling and 50Hz AC, and with tightly wound metal-enclosed coils, there was no long-term measurable net field. I also tested the phone above my keyboard where the absolute magnetic flux was greatest. At times the teslameter's overall direction would stray from North, or would return to North slowly. 
+
+It was frustrating that these issues were not readily apparent. Testing a simple 360° rotation after the lab produced a reasonable plot, and live angle readouts at a given time seemed to correspond to movements.
+A lot of strife could have been avoided if the recorded measurements were immediately visible in the lab. A live plot output similar to that of the Vernier software would have been extremely useful in identifying a problem, in much the same way that we could investigate the problems in the intensity readings during the lab. The numerical output of the sensor should not have been trusted, as it is now quite obvious how useless a live stream of time-angle tuples are in revealing failing measurements to an experimenter.
+
+\subsection*{Intensity Measurement}
+
+During second lab a lot of time was spent attempting to troubleshoot the microwave intensity readings. The main cause of this issue was the use of a digital ammeter when recording intensity data. Although I am lucky enough to have insofar avoided higher electronics, we suspected that the lowered impedance of the ammeter was interfering with its own measurements. Upon inspecting the manual Josh M. discovered that the external reading was intended to be used with a voltmeter. The switch immediately produced something close to the expected interference pattern.
 
 \input{appendix.tex}
 

@@ -1,9 +1,10 @@
 \section*{Appendix}
 
-% \subsubsection{Synchronisation Table}
-Below is the table of synchronisation used to combine the angle and voltage time series. This is also \verb|time_sync.csv| in the repository.
 
 \begin{table}
+\subsubsection*{Synchronisation Offsets}
+Below is the table of synchronisation used to combine the angle and voltage time series. This is also \verb|time_sync.csv| in the repository.
+For each trial, there is a universal time that was determined manually using the screen recording described in the setup instructions.
 \label{tab:SynchronisationTable}
 \begin{center}
 \begin{tabular}{|lrr|}
@@ -22,3 +23,12 @@ Trial & Time displacement of sync (s) & Universal time of sync (milliseconds sin
 
 \end{center}
 \end{table}
+
+\subsection*{Code}
+
+The raw data, code, and latex source are available on a public GitHub repository.
+The analysis scripts require \verb|python3|, \verb|Flask|, \verb|hvplot|, and \verb|polars| for the webserver, plotting, and analysis.
+The rendered graphs are also available, including the vector based plots that allow high precision zooming and interaction.
+
+Repo: \href{https://github*.com/TunaMaestro/phys1241_final_lab.git}{\text{https://github.com/TunaMaestro/phys1241\_final\_lab.git}}
+

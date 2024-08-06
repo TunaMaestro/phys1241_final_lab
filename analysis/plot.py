@@ -44,5 +44,5 @@ if __name__ == "__main__":
             plot_path = (
                 Path("plots") / Path(*i.parts[2:-1]) / f"{i.stem}-{x}-{y}"
             ).with_suffix(".png")
-            hv.save(plot, plot_path, fmt="png")
+            hv.save(plot, plot_path, fmt="png", dpi=144)
             # hv.show(plot)
