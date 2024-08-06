@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Online Compass - Navigational compass right in your browser</title>
+  <meta name="description"
+    content="Free online compass in your browser for navigation. Accurate digital direction to the north, south, east, and west. Navigate confidently without downloads or install. Experience our tool today!">
+  <meta name="twitter:title" content="Online Compass - Navigational compass right in your browser">
+  <meta name="twitter:description"
+    content="Free online compass in your browser for navigation. Accurate digital direction to the north, south, east, and west. Navigate confidently without downloads or install. Experience our tool today!">
+  <meta name="twitter:url" content="https://onlinedigitalcompass.com/">
+  <meta name="twitter:image" content="https://onlinedigitalcompass.com/images/online-compass.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onlinedigitalcompass.com/">
+  <meta property="og:title" content="Online Compass - Navigational compass right in your browser">
+  <meta property="og:description"
+    content="Free online compass in your browser for navigation. Accurate digital direction to the north, south, east, and west. Navigate confidently without downloads or install. Experience our tool today!">
+  <meta property="og:image" content="https://onlinedigitalcompass.com/images/online-compass.jpg">
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="https://onlinedigitalcompass.com/public/icons/apple-touch-icon.png">
+  <link rel="icon" href="https://onlinedigitalcompass.com/public/icons/favicon.ico">
+  <link rel="canonical" href="https://onlinedigitalcompass.com/">
+  <link rel="alternate" hreflang="x-default" href="https://onlinedigitalcompass.com/">
+  <link rel="alternate" hreflang="en" href="https://onlinedigitalcompass.com/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .container {
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    #compass {
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #msg.hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="bg-body-tertiary">
+
+  <header class="border-bottom">
+
+  </header>
+
+  <div>
+    <pre id="data">
+    </pre>
+    <span>
+      Payload size:
+    </span>
+    <span id="payload-size">
+    </span>
+
+  </div>
+
+  <main class="container my-5">
+
+    <article class="mt-5" style="margin-top: 100vh">
+      <p class="lead">To fully utilize the capabilities of an online compass, some devices might require certain
+        sensors
+        enabled. For Chrome users, the following steps can help:</p>
+      <h2 class="h2 mb-4 mt-4">Setup for Chrome</h2>
+      <p class="lead">Copy and paste the link into a new tab:</p>
+      <code id="chromeLink" class="d-block">chrome://flags/#enable-generic-sensor-extra-classes</code>
+      <button id="copyButton" class="btn btn-primary mt-4 mb-4">Copy</button>
+      <div class="row mb-4 mt-4">
+        <div class="col-md-4 text-center">
+          <p class="mt-2">Step 1: Copy the link provided above and paste it.</p>
+          <img src="https://onlinedigitalcompass.com/images/step1.jpg"
+            alt="Step 1: Copy the link provided above and paste it." class="img-fluid">
+        </div>
+        <div class="col-md-4 text-center">
+          <p class="mt-2">Step 2: Click on &quot;Enable&quot;.</p>
+          <img src="https://onlinedigitalcompass.com/images/step2.jpg" alt="Step 2: Click on &quot;Enable&quot;."
+            class="img-fluid">
+        </div>
+        <div class="col-md-4 text-center">
+          <p class="mt-2">Step 3: If &quot;Enabled&quot;, refresh our website page.</p>
+          <img src="https://onlinedigitalcompass.com/images/step3.jpg"
+            alt="Step 3: If &quot;Enabled&quot;, refresh our website page." class="img-fluid">
+        </div>
+      </div>
+      <p class="lead">Set Generic Sensor Extra Classes to enabled. If using Chrome versions before Chrome 67,
+        ensure the
+        Generic Sensor feature flag is also enabled.</p>
+      <h2 class="h2 mb-4 mt-4">Understanding the Compass</h2>
+      <p class="lead">The fundamental idea behind a compass is to show cardinal directions. Traditionally, a
+        compass consists
+        of a magnetic needle and a compass rose, displaying direction labels. It works by aligning itself with
+        the Earth&#039;s magnetic field. When you think of magnets, remember they have north and south poles. The
+        north pole of one magnet is attracted to the south pole of another. This principle is at the heart of a
+        compass&#039;s function.</p>
+      <h2 class="h2 mb-4 mt-4">Online Compass Advantages:</h2>
+      <ul class="lead">
+        <li><strong>Convenience:</strong>
+          Online compasses are
+          readily available on any device with a browser.
+          No need to carry a physical compass or install apps.</li>
+        <li><strong>Real-Time Updates:</strong>
+          Online compasses
+          provide instant readings, making them ideal for
+          both adventurous trails and city navigation.</li>
+        <li><strong>Easy to Use:</strong>
+          Activate location
+          services, calibrate by holding your device flat, and
+          you&#039;re set to determine all cardinal directions.</li>
+        <li><strong>Environmental Efficiency:</strong>
+          Eliminates the need for metal-based physical compasses,
+          contributing to a greener planet.</li>
+        <li><strong>Educational Tool:</strong> A modern way to
+          teach the younger generation about cardinal
+          directions, geography, and navigation.</li>
+      </ul>
+      </ul>
+    </article>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://onlinedigitalcompass.com/public/js/script.js"></script>
+  <script>
+
+    if (('wakeLock' in navigator)) {
+      let screenLock;
+      navigator.wakeLock.request('screen')
+        .then(lock => {
+          screenLock = lock;
+        });
+
+
+    }
+    const compass = document.getElementById('compass');
+    const msg = document.getElementById('msg');
+    const directionDisplay = document.getElementById('angle');
+    const locationElem = document.getElementById('location');
+    const coordsElem = document.getElementById('coords');
+    const shareLinkElem = document.getElementById('share-link');
+    const locationSwitch = document.getElementById("locationSwitch");
+
+    var data = [];
+
+    let simulatedAngle = 0;
+
+    function isAppleDevice() {
+      return [
+        "iPad Simulator", "iPhone Simulator", "iPod Simulator",
+        "iPad", "iPhone", "iPod"
+      ].includes(navigator.platform) ||
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+    }
+
+    function save(data) {
+      fetch("save", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(data),
+      })
+      data.length = 0
+    }
+
+    function process(data, heading) {
+      let time = new Date();
+      data.push([time.toISOString(), time.valueOf(), heading])
+      if (data.length > 500) {
+        save(data)
+      }
+
+      return data
+    }
+
+    function handleOrientationEvent(e) {
+      let calculatedHeading;
+      if (e.webkitCompassHeading) {
+        calculatedHeading = e.webkitCompassHeading - 180;
+      } else {
+        calculatedHeading = 180 + e.alpha;
+      }
+
+      calculatedHeading -= 180;
+      let heading = calculatedHeading.toFixed(4);
+
+      inner = (new Date()).toISOString() + "    " + heading + "\n"
+
+      document.getElementById("payload-size").innerText = data.length
+
+      process(data, heading)
+
+      document.getElementById("data").innerHTML = inner
+    }
+
+
+    function getDirectionLabel(angle) {
+      if (angle >= 22.5 && angle < 67.5) return "NW";
+      if (angle >= 67.5 && angle < 112.5) return "W";
+      if (angle >= 112.5 && angle < 157.5) return "SW";
+      if (angle >= 157.5 && angle < 202.5) return "S";
+      if (angle >= 202.5 && angle < 247.5) return "SE";
+      if (angle >= 247.5 && angle < 292.5) return "E";
+      if (angle >= 292.5 && angle < 337.5) return "NE";
+      return "N";
+    }
+
+    if (isAppleDevice()) {
+      window.addEventListener("deviceorientation", handleOrientationEvent);
+    } else {
+      window.addEventListener("deviceorientationabsolute", handleOrientationEvent, true);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      function supportsOrientation() {
+        return 'ondeviceorientation' in window || 'ondeviceorientationabsolute' in window;
+      }
+
+      function showNotSupportedMessage() {
+        msg.classList.remove("d-none");
+      }
+
+      if (supportsOrientation()) {
+        if (isAppleDevice()) {
+          window.addEventListener("deviceorientation", handleOrientationEvent);
+        } else {
+          window.addEventListener("deviceorientationabsolute", handleOrientationEvent, true);
+        }
+      } else {
+        showNotSupportedMessage();
+      }
+
+      if (localStorage.getItem('locationEnabled') === 'true') {
+        locationSwitch.checked = true;
+      } else {
+        locationSwitch.checked = false;
+      }
+
+      locationSwitch.addEventListener("change", function () {
+        if (this.checked && "geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            coordsElem.textContent = `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+            shareLinkElem.href =
+              `https://www.google.com/maps/?q=${latitude},${longitude}`;
+            locationElem.classList.remove('d-none');
+          });
+          localStorage.setItem('locationEnabled', 'true');
+        } else {
+          coordsElem.textContent = '';
+          shareLinkElem.href = '#';
+          locationElem.classList.add('d-none');
+          localStorage.setItem('locationEnabled', 'false');
+        }
+      });
+
+      function copyLocationLink() {
+        var textArea = document.createElement("textarea");
+        textArea.value = document.getElementById("chromeLink").textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("Copy");
+        textArea.remove();
+      }
+
+      document.getElementById("copyButton").addEventListener("click", copyLocationLink);
+
+      var html = document.querySelector('html');
+      var initialTheme = html.getAttribute('data-bs-theme');
+      compass.src = initialTheme === 'dark' ? 'https://onlinedigitalcompass.com/images/compass-light.png' : 'https://onlinedigitalcompass.com/images/compass-dark.png';
+
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName === 'data-bs-theme') {
+            var newTheme = html.getAttribute('data-bs-theme');
+            compass.src = newTheme === 'dark' ? 'https://onlinedigitalcompass.com/images/compass-light.png' :
+              'https://onlinedigitalcompass.com/images/compass-dark.png';
+          }
+        });
+      });
+
+      var config = {
+        attributes: true,
+        attributeFilter: ['data-bs-theme']
+      };
+      observer.observe(html, config);
+    });
+  </script>
+</body>
+
+</html>
