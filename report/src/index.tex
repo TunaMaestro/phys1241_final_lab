@@ -49,6 +49,14 @@ The total intensity at an angle is the product of the reductions in \eqref{eqn:D
 I = I_{max} ~ \cos^2{\left(\frac{\pi \, d \, \sin(\theta)}{\lambda}\right)} \left( \frac{\sin({\alpha})}{\alpha} \right)^2.
 \end{equation}
 
+The expected curve between angle and intensity is shown below for $\frac{d}{a} \approx 4$.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{theory_graph.png}
+\caption{Expected curve}
+\label{fig:ExpectedCurve}
+\end{figure}
+
 \section*{Apparatus}
 
 The experiment used:
@@ -169,8 +177,7 @@ The final intention was to determine the wavelength of the microwave, then multi
 
 \section*{Data}
 
-We conducted quite a few trials, attempting to produce good data in a few ways.
-
+\subsubsection*{Trial Notes}
 \begin{center}
 \begin{tabularx}{\linewidth}{ |c | X| }
  \hline
@@ -180,17 +187,44 @@ We conducted quite a few trials, attempting to produce good data in a few ways.
  2 & Sweep was fast resulting in spiked maxima, making it difficult to determine accurate angle of maximum. \\ 
  3 & Slit distance was increased to test wider slits. \\ 
  4 &  \\ 
- 5 & Changed from horizontal horn and polarisation to vertical. This had a positive effect on the results: the resultant graph did not have the same lower bound envelope that was observed in previous trials. Where zeros were expected on higher order minima, the minimum voltage was around 0.2 to 0.5 of the central maximum. \\ 
+ 5 & Changed from horizontal horn and polarisation to vertical. This had a positive effect on the results: the resultant graph did not have the same lower bound envelope that was observed in previous trials. Where zeros were expected on higher order minima, the minimum voltage was around 20\% to 50\% of the central maximum. \\ 
  6 &  \\ 
  7 &  \\ 
  \hline
 \end{tabularx}
 \end{center}
 
+The raw data recorded consists of the time-angle series measured using the angle sensor apparatus, the time-voltage series measured using the Vernier differential voltage probe, and recorded using Logger Pro software, and the screen recording synchronisation data. Both time series consist of a time column and their respective data column, and were polling on the order of 2-5Hz.
+
+The data is represented here post-processed and in plot form. This is because the raw data consists of a large (24MB) of digital sample values, so it would not be reasonable to present here. The data is accessible in the provided git repository in its raw and processed form however.
+
+The synchronisation data that was derived from the screen recordings is in the \nameref{tab:SynchronisationTable}.
+
+The plots are vital to understanding the data due to the sheer quantity of data points recorded; with only numerical aggregations it would be impossilbe to gain an understanding of the experiment.
+
 \input{plots.tex}
 
 \section*{Results}
 
 As hinted throughout the report, this section was not as kind to write. 
+
+As is obvious in the last column of the results, the experiment failed to produce usable data. The following post-mortem will explore some of the reasons we think this occurred.
+
+\subsection*{Analysis}
+
+This is the source of bad data. By comparing the plots of angle over time to the movement carried out during the experiment, we see that the recorded angle has seemingly no bearing on reality. This was quite a confusing and frustrating discovery since during testing and upon cursory inspection during the experiment the angle measurement seemed to operate correctly. 
+In some of the trials such as 3, 4, 5, there are plateaus of angle where there is still change in voltage. This should not occur and is indicative of the sensor's catastrophic failure. There are also periods of fast and spiked changes in angle, (trials 3, 4, 5) which does not correlate with the slow rotation carried out during the experiment.
+
+It is also important to note that the starting angle and overall range varies greatly. This is unexpected as although Earth hasn't had one for a long time, geomagnetic reversal is quite slow. This aspect of the data leads into our questioning of the sensor's calibration and reliability.
+
+The discontinuities are expected as the sensor measures in a range of $[0°, \, 360°)$.
+
+The failure of the measurement is most obvious in the angle-voltage data. Comparing these plots with the expected curve (figure \ref{fig:ExpectedCurve}) will result in a migraine, and we were thus unable to draw any valid conclusion from the data about the phenomena we attempted to measure. Referencing the previously calculated uncertainty, I can confidently say that our result was not consistent.
+
+\subsection*{Discussion}
+
+
+
+\input{appendix.tex}
 
 
